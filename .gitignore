@@ -1,0 +1,5 @@
+node_modules/
+.tmp/
+# Vite output for both pages — server.ts rebuilds it on boot when stale;
+# `just fleet-web-build` does it by hand
+web/dist/

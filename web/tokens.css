@@ -1,0 +1,72 @@
+/* Hallmark · portable token export
+ * theme: custom · vibe: "instrument panel, dark, terminal-adjacent"
+ * axes: dark / mono / cool
+ *
+ * Paper and accent are fixed by this repo's CLAUDE.md design rules
+ * (#0a0a0f background, #64b5f6 Neo blue), expressed here in OKLCH and
+ * tinted toward the anchor hue so no neutral carries zero chroma.
+ *
+ * A portable export for reuse outside this app. The live source both pages
+ * build from is web/shared/theme.css (Tailwind v4 @theme) -- change colours
+ * there; this file is a snapshot and nothing here imports it.
+ */
+
+:root {
+  /* paper — dark band. Resolves to rgb(10,10,16) = the mandated #0a0a0f.
+     Hue 285 is that colour's own hue; the accent's 249 cannot reach it. */
+  --color-paper:      oklch(15% 0.012 285);
+  --color-paper-2:    oklch(19% 0.013 285);
+  --color-paper-3:    oklch(23% 0.014 285);
+
+  /* ink — paper L < 50 so ink sits 88–96% */
+  --color-ink:        oklch(92% 0.010 249);
+  --color-ink-2:      oklch(76% 0.010 249);
+  /* the floor is #777 (~L 52%); every muted tone stays above it */
+  --color-muted:      oklch(62% 0.012 249);
+
+  --color-rule:       oklch(28% 0.012 249);
+  --color-rule-2:     oklch(22% 0.012 249);
+
+  /* accent — reserved for wordmark, active tab, focus. Not a surface fill. */
+  --color-accent:     oklch(74% 0.130 249);
+  --color-accent-ink: oklch(14% 0.012 249);
+  --color-focus:      oklch(80% 0.190 249);
+
+  /* state scale — semantic, carries meaning the accent must not */
+  --color-run:        oklch(80% 0.130 75);
+  --color-open:       oklch(78% 0.140 145);
+  --color-resume:     oklch(80% 0.110 200);
+  --color-cold:       oklch(62% 0.012 249);
+  --color-danger:     oklch(70% 0.160 25);
+
+  --font-display: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body:    "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* 4 pt scale */
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.875rem;
+  --text-md:   1rem;
+  --text-lg:   1.25rem;
+
+  --rule-hair: 1px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  --dur-instant: 80ms;
+  --dur-short:   140ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* prose honours the repo's 750px rule; the data index needs more */
+  --measure-prose: 750px;
+  --measure-index: 1200px;
+}

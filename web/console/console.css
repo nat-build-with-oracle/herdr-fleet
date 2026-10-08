@@ -1,0 +1,3 @@
+/* The console's stylesheet: the shared theme and nothing else. Every rule the
+ * console needs is expressible as a utility, so it has none of its own. */
+@import "../shared/theme.css";

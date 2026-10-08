@@ -1,0 +1,77 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Index-First
+ * theme: custom · vibe: "instrument panel, dark, terminal-adjacent"
+ * axes: dark / mono / cool
+ *
+ * The one theme both pages share. Tailwind v4 is configured here, in CSS, not
+ * in a JS config: every --color-* token below becomes a utility (bg-paper,
+ * text-accent, border-rule...). Paper and accent are fixed by the repo's
+ * CLAUDE.md design rules -- #0a0a0f and Neo blue #64b5f6 -- expressed in OKLCH.
+ *
+ * Each page imports this file from its own stylesheet and adds only the rules
+ * no utility can express. A worktree therefore looks the same on both pages.
+ */
+@import "tailwindcss";
+
+@theme {
+  /* paper resolves to rgb(10,10,16), the mandated #0a0a0f. Hue 285 is that
+     colour's own hue; the accent's 249 cannot reach it (#0a0a0f is
+     blue-violet, R=G). The neutrals stay tinted toward the accent. */
+  --color-paper:      oklch(15% 0.012 285);
+  --color-paper-2:    oklch(19% 0.013 285);
+  --color-paper-3:    oklch(23% 0.014 285);
+
+  --color-ink:        oklch(92% 0.010 249);
+  --color-ink-2:      oklch(76% 0.010 249);
+  /* the floor is #777 (~L 52%) per CLAUDE.md; every muted tone sits above it */
+  --color-muted:      oklch(62% 0.012 249);
+
+  --color-rule:       oklch(28% 0.012 249);
+  --color-rule-2:     oklch(22% 0.012 249);
+
+  /* Neo blue -- wordmark, active control, focus */
+  --color-accent:     oklch(74% 0.130 249);
+  --color-focus:      oklch(80% 0.190 249);
+  --color-danger:     oklch(70% 0.160 25);
+
+  /* worktree states -- semantic, not decoration */
+  --color-running:    oklch(80% 0.130 75);
+  --color-open:       oklch(78% 0.140 145);
+  --color-resumable:  oklch(80% 0.110 200);
+  --color-cold:       oklch(62% 0.012 249);
+
+  /* compare verdicts. "here"/"there", not "left"/"right": --color-left would
+     generate a text-left utility that collides with Tailwind's text-align */
+  --color-same:       oklch(62% 0.012 249);
+  --color-differs:    oklch(80% 0.130 75);
+  --color-unknowable: oklch(66% 0.055 300);
+  --color-here:       oklch(80% 0.130 75);
+  --color-there:      oklch(80% 0.110 200);
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* measured on the real content, not Tailwind's defaults:
+     wide  -- two compare columns stop being readable side by side
+     index -- the console's five-column row stops fitting on one line */
+  --breakpoint-wide: 52rem;
+  --breakpoint-index: 62rem;
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { overflow-x: clip; }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 1ms !important; }
+  }
+}

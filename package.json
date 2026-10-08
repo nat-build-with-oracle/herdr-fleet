@@ -1,0 +1,29 @@
+{
+  "name": "herdr-fleet",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "repository": "github:nat-build-with-oracle/herdr-fleet",
+  "type": "module",
+  "description": "Side-by-side herdr fleet view: this machine vs a saved machine, over the herdr API only.",
+  "scripts": {
+    "start": "bun run fleet-tui.tsx",
+    "server": "bun run server.ts",
+    "web:dev": "vite",
+    "web:build": "vite build"
+  },
+  "dependencies": {
+    "@types/react-dom": "^19.3.0",
+    "ink": "^6.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/bun": "^1.4.2",
+    "@vitejs/plugin-react": "^6.1.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  }
+}

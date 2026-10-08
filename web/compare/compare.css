@@ -1,0 +1,18 @@
+/* Compare's stylesheet: the shared theme, plus the one rule no utility can
+ * express. Everything else is Tailwind classes on the components. */
+@import "../shared/theme.css";
+
+@layer components {
+  /* The leader that carries the eye across the gap between a row's two halves.
+     A dotted bottom border on a flexing empty span -- there is no utility for
+     "fill the slack with a rule", and faking it with a pseudo-element put the
+     state on the wrong side of it. */
+  .leader {
+    flex: 1 1 auto;
+    min-inline-size: 0.5rem;
+    border-block-end: 1px dotted var(--color-rule);
+    translate: 0 -0.3em;
+    opacity: 0.8;
+  }
+  .row:hover .leader { border-color: var(--color-rule-2); }
+}

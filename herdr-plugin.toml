@@ -1,0 +1,36 @@
+id = "herdr-fleet.fleet-tui"
+name = "Fleet"
+version = "0.1.0"
+min_herdr_version = "0.9.1"
+description = "This machine beside a saved machine: repos, worktrees, agent state, and the gaps between them."
+platforms = ["linux", "macos"]
+
+[[build]]
+command = ["bun", "install"]
+
+# zoomed, because two aligned columns need the whole width to stop truncating
+[[panes]]
+id = "fleet"
+title = "Fleet: local ⇄ machine"
+description = "Side-by-side workspace diff against the first enabled saved machine."
+placement = "zoomed"
+command = ["bun", "run", "fleet-tui.tsx"]
+
+[[panes]]
+id = "agents"
+title = "Claude: resume / start / kill"
+description = "The space tree with Claude Code lifecycle on it. Close and kill ask first."
+placement = "zoomed"
+command = ["bun", "run", "agents-tui.tsx"]
+
+[[actions]]
+id = "open"
+title = "Open fleet view"
+contexts = ["workspace"]
+command = ["bun", "run", "fleet-tui.tsx"]
+
+[[actions]]
+id = "agents"
+title = "Open Claude control"
+contexts = ["workspace"]
+command = ["bun", "run", "agents-tui.tsx"]
